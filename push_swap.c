@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/02/25 21:41:35 by haruki           ###   ########.fr       */
+/*   Updated: 2025/02/26 02:30:19 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,63 @@ int check_error(char *num)
     return (0);
 }
 
+int *indexing(int *arr,int size)
+{
+    int i;
+    int j;
+    int count;
+    int *new_arr;
+
+    new_arr = (int *)malloc(sizeof(int) * size);
+    i = 0;
+    while(i < size)
+    {
+        count = 1;
+        j = 0;
+        while(j < size)
+        {
+            if(arr[i] > arr[j])
+                count++;
+            j++;
+        }
+        new_arr[i] = count;
+        i++;
+    }
+    free(arr);
+    return (new_arr);
+}
+
+int check_dup(int size,char **arr)
+{
+    int i;
+    int j;
+
+    i = 1;
+    while(i < size)
+    {
+        j = i + 1;
+        while(j < size)
+        {
+            if(ft_strcmp(arr[i],arr[j]) == 0)
+                return (-1);
+            j++;
+        }
+        i++;
+    }
+    return (0);
+}
+
+void sort(int *arr,int size)
+{
+    
+}
+
 int main(int argc, char *argv[])
 {
     int *arr;
     int i;
 
-    if(argc == 1)
+    if(argc == 1 || check_dup(argc - 1,argv + 1) == -1)
         error();
     i = 1;
     while(i < argc)
@@ -100,16 +151,14 @@ int main(int argc, char *argv[])
         i++;
     }
     arr = (int *)malloc(sizeof(int) * (argc - 1));
-    while(i < argc)
-    {
-        to_int(&arr[i],argv[i]);
-        i++;
-    }
     i = 0;
-    while(i < argc)
+    while(i < argc - 1)
     {
-        printf("%d\n",arr[i]);
+        to_int(&(arr[i]),argv[i+1]);
         i++;
     }
+    arr = indexing(arr,argc - 1);
+    sort(arr,argc - 1);
+    free(arr);
     return (0);
 }
