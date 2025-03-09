@@ -1,15 +1,12 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I.
 
-NAME = push_swap.a
-SRC_DIR = .
-OBJ_DIR = obj
-
+NAME = push_swap
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
-	ar rcs $@ $^
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

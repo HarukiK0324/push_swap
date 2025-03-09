@@ -6,50 +6,11 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/02/26 02:30:19 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/09 21:45:31 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	while (*s1 != '\0' && (*s1 == *s2))
-	{
-		s1++;
-		s2++;
-	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
-}
-
-int ft_strlen(char *str)
-{
-    int i;
-
-    i = 0;
-    while(str[i] != '\0')
-        i++;
-    return (i);
-}
-
-void to_int(int *num,char *str)
-{
-    int i;
-    int itr;
-
-    i = 0;
-    itr = 1;
-    if(str[0] == '-')
-    {
-        itr = -1;
-        i++;
-    }
-    while(str[i] != '\0')
-    {
-        *num = *num * 10 + itr * (str[i] - '0');
-        i++;
-    }
-}
 
 void error()
 {
@@ -85,39 +46,15 @@ int check_error(char *num)
     return (0);
 }
 
-int *indexing(int *arr,int size)
-{
-    int i;
-    int j;
-    int count;
-    int *new_arr;
 
-    new_arr = (int *)malloc(sizeof(int) * size);
-    i = 0;
-    while(i < size)
-    {
-        count = 1;
-        j = 0;
-        while(j < size)
-        {
-            if(arr[i] > arr[j])
-                count++;
-            j++;
-        }
-        new_arr[i] = count;
-        i++;
-    }
-    free(arr);
-    return (new_arr);
-}
 
 int check_dup(int size,char **arr)
 {
     int i;
     int j;
 
-    i = 1;
-    while(i < size)
+    i = 0;
+    while(i < size - 1)
     {
         j = i + 1;
         while(j < size)
@@ -131,14 +68,21 @@ int check_dup(int size,char **arr)
     return (0);
 }
 
-void sort(int *arr,int size)
-{
+// void push_swap(t_stack *stack_a,int size)
+// {
+//     t_stack *stack_b;
+//     int chunk;
+
+//     stack_b = (t_stack *)malloc(sizeof(t_stack) * size);
     
-}
+// }
+
+#include <stdio.h>
+
 
 int main(int argc, char *argv[])
 {
-    int *arr;
+    t_stack *stack_a;
     int i;
 
     if(argc == 1 || check_dup(argc - 1,argv + 1) == -1)
@@ -150,15 +94,15 @@ int main(int argc, char *argv[])
             error();
         i++;
     }
-    arr = (int *)malloc(sizeof(int) * (argc - 1));
+    stack_a = init_stack();
     i = 0;
     while(i < argc - 1)
     {
-        to_int(&(arr[i]),argv[i+1]);
+        push_back(stack_a,to_int(argv[i+1]));
         i++;
     }
-    arr = indexing(arr,argc - 1);
-    sort(arr,argc - 1);
-    free(arr);
+    stack_a = indexing(stack_a);
+    push_swap(stack_a,argc - 1);
+    free_stack(stack_a);
     return (0);
 }
