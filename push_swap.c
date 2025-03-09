@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/09 21:45:31 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/09 21:47:54 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
         i++;
     }
     stack_a = indexing(stack_a);
-    push_swap(stack_a,argc - 1);
+    // push_swap(stack_a,argc - 1);
     free_stack(stack_a);
     return (0);
 }
