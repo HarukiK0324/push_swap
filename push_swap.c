@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/09 21:47:54 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/09 22:21:54 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int check_dup(int size,char **arr)
     int j;
 
     i = 0;
-    while(i < size - 1)
+    while(i < size)
     {
+        if(check_error(arr[i]) == -1)
+            return (-1);
         j = i + 1;
         while(j < size)
         {
@@ -68,14 +70,25 @@ int check_dup(int size,char **arr)
     return (0);
 }
 
-// void push_swap(t_stack *stack_a,int size)
-// {
-//     t_stack *stack_b;
-//     int chunk;
+void push_swap(t_stack *stack_a,int size)
+{
+    t_stack *stack_b;
+    int itr;
+    int chunk;
 
-//     stack_b = (t_stack *)malloc(sizeof(t_stack) * size);
-    
-// }
+    itr = 1;
+    chunk = size / 8;
+    if(chunk == 0)
+        chunk = 2;
+    stack_b = init_stack();
+    while(stack_a->size > 3)
+    {
+        if(stack_a->top->data <= chunk * itr)
+            push(stack_a,stack_b);
+        else
+            rotate(stack_a);
+    }
+}
 
 #include <stdio.h>
 
@@ -87,13 +100,6 @@ int main(int argc, char *argv[])
 
     if(argc == 1 || check_dup(argc - 1,argv + 1) == -1)
         error();
-    i = 1;
-    while(i < argc)
-    {
-        if(check_error(argv[i]) == -1)
-            error();
-        i++;
-    }
     stack_a = init_stack();
     i = 0;
     while(i < argc - 1)
@@ -102,7 +108,7 @@ int main(int argc, char *argv[])
         i++;
     }
     stack_a = indexing(stack_a);
-    // push_swap(stack_a,argc - 1);
+    push_swap(stack_a,argc - 1);
     free_stack(stack_a);
     return (0);
 }
