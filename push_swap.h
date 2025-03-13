@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:42:28 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/09 22:19:24 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/11 19:28:48 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int check_dup(int size,char **arr);
 void push_back(t_stack *stack,int data);
 void free_stack(t_stack *stack);
 t_stack *init_stack();
-t_stack *indexing(t_stack *stack);
+t_stack *indexing(t_stack *stack,int size);
 void swap(t_stack *stack);
 void rotate(t_stack *stack);
 void reverse_rotate(t_stack *stack);

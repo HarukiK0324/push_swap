@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:45:32 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/09 21:45:43 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/11 22:07:38 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@ void push_back(t_stack *stack,int data)
 
     new_node = (t_node *)malloc(sizeof(t_node));
     new_node->data = data;
-    new_node->next = NULL;
     if(stack->size == 0)
     {
         stack->top = new_node;
         stack->bottom = new_node;
+        new_node->prev = new_node;
+        new_node->next = new_node;
     }
     else
     {
         stack->bottom->next = new_node;
         new_node->prev = stack->bottom;
+        new_node->next = stack->top;
         stack->bottom = new_node;
+        stack->top->prev = stack->bottom;
     }
     stack->size++;
 }
@@ -37,10 +40,11 @@ void free_stack(t_stack *stack)
 {
     t_node *tmp;
 
-    while(stack->top != NULL)
+    while(stack->size > 0)
     {
         tmp = stack->top;
         stack->top = stack->top->next;
+        stack->size--;
         free(tmp);
     }
     free(stack);
@@ -57,7 +61,7 @@ t_stack *init_stack()
     return stack;
 }
 
-t_stack *indexing(t_stack *stack)
+t_stack *indexing(t_stack *stack,int size)
 {
     t_stack *new_stack;
     t_node *tmp;
@@ -66,20 +70,21 @@ t_stack *indexing(t_stack *stack)
 
     new_stack = init_stack();
     num = stack->top;
-    while(num != NULL)
+    while(new_stack->size < size)
     {
         count = 1;
         tmp = stack->top;
-        while(tmp != NULL)
+        while(stack->size > 0)
         {
             if(tmp->data < num->data)
                 count++;
             tmp = tmp->next;
+            stack->size--;
         }
         push_back(new_stack,count);
         num = num->next;
+        stack->size = size;
     }
-    tmp = stack->top;
-    free_stack(stack);
+   free_stack(stack);
     return new_stack;
 }

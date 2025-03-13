@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:44:34 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/09 21:44:58 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/13 22:24:02 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,34 @@ int to_int(char *str)
         i++;
     }
     return (num);
+}
+
+static unsigned int	size_of(char const *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*ptr;
+	int		i;
+
+	ptr = malloc(size_of(s) + 1);
+	i = 0;
+	if (ptr == (void *)0)
+		return ((void *)0);
+	while (s[i] != '\0')
+	{
+		ptr[i] = s[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }
