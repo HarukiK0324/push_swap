@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 17:30:19 by haruki            #+#    #+#             */
-/*   Updated: 2024/12/14 18:19:49 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:17:40 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ int	ft_print_pointer(void *ptr)
 
 	address = (unsigned long)ptr;
 	if (ptr == NULL)
-	{
-		ft_print_string("(nil)");
-		return (5);
-	}
+		return (ft_print_string("(nil)"));
 	ft_print_string("0x");
 	ft_print_hex_pointer(address);
 	return (ft_pointer_digits(address) + 2);
