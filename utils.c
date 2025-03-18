@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:44:34 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/13 22:29:16 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/18 16:06:01 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,10 @@ char	*ft_strdup(const char *s)
 	}
 	ptr[i] = '\0';
 	return (ptr);
+}
+
+void error()
+{
+    write(1,"Error\n",6);
+    exit(1);
 }

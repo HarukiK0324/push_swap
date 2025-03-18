@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:45:32 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/11 22:07:38 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/18 16:06:47 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,24 @@ t_stack *indexing(t_stack *stack,int size)
     }
    free_stack(stack);
     return new_stack;
+}
+
+void rotate_find(t_stack *stack_a,t_stack *stack_b,int num, void (*f)(t_stack *))
+{
+    int found;
+
+    found = 0;
+    while(stack_b->top->data != num)
+    {
+        if(stack_b->top->data == num -1)
+        {
+            push(stack_b,stack_a);
+            found = 1;
+        }
+        else
+            f(stack_b);
+    }
+    push(stack_b,stack_a);
+    if(found == 1)
+        swap(stack_a);
 }
