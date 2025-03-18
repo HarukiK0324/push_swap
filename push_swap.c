@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/13 22:20:58 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/18 16:03:14 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,8 @@ void push_swap(t_stack *stack_a,int size)
     stack_b = init_stack();
     push_to_b(stack_a,stack_b,chunk);
     insertion_sort(stack_a,stack_b);
-    // free_stack(stack_a);
-    // free_stack(stack_b);
+    free_stack(stack_a);
+    free_stack(stack_b);
 }
 
 

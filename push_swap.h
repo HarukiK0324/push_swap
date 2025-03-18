@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:42:28 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/11 19:28:48 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/17 20:19:02 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ typedef struct s_stack
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include "../libftprintf/ft_printf.h"
 
 int	ft_strcmp(const char *s1, const char *s2);
-int ft_strlen(char *str);
 int to_int(char *str);
+static unsigned int	size_of(char const *s);
 void error();
 int check_error(char *num);
 int check_dup(int size,char **arr);
@@ -45,5 +46,6 @@ void swap(t_stack *stack);
 void rotate(t_stack *stack);
 void reverse_rotate(t_stack *stack);
 void push(t_stack *stack_a,t_stack *stack_b);
+char	*ft_strdup(const char *s);
 
 #endif
