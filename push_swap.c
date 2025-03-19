@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/19 14:57:37 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/19 15:26:31 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,6 @@ int main(int argc, char *argv[])
         small_sort(stack_a);
     else
         push_swap(stack_a,argc - 1);
+    free_stack(stack_a);
     return (0);
 }
