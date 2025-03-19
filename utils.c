@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:44:34 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/18 16:06:01 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/19 13:19:00 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int to_int(char *str)
     return (num);
 }
 
-static unsigned int	size_of(char const *s)
+unsigned int	size_of(char const *s)
 {
 	int	i;
 
