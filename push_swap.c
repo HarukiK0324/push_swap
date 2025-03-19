@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/18 16:08:00 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/19 13:17:36 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,41 @@ void push_swap(t_stack *stack_a,int size)
     free_stack(stack_b);
 }
 
+void sort_three(t_stack *stack_a)
+{
+    if(stack_a->top->data > stack_a->top->next->data && stack_a->top->data > stack_a->bottom->data)
+            rotate(stack_a);
+    else if(stack_a->top->next->data > stack_a->top->data && stack_a->top->next->data > stack_a->bottom->data)
+        reverse_rotate(stack_a);
+    if(stack_a->top->data > stack_a->top->next->data)
+        swap(stack_a);
+}
+
+void small_sort(t_stack *stack_a)
+{
+    t_stack *stack_b;
+
+    if(stack_a->size == 2 && stack_a->top->data == 2)
+        swap(stack_a);
+    else
+    {
+        while(stack_a->size > 3)
+        {
+            stack_b = init_stack();
+            if(stack_a->top->data <= 2)
+                push(stack_a,stack_b);
+            else
+                rotate(stack_a);
+        }
+        sort_three(stack_a);
+        push(stack_b,stack_a);
+        push(stack_b,stack_a);
+        if(stack_a->top->data > stack_a->top->next->data)
+            swap(stack_a);
+        free_stack(stack_b);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     t_stack *stack_a;
@@ -75,6 +110,10 @@ int main(int argc, char *argv[])
         i++;
     }
     stack_a = indexing(stack_a,argc - 1);
-    push_swap(stack_a,argc - 1);
+    if(stack_a->size < 6)
+        small_sort(stack_a);
+    else
+        push_swap(stack_a,argc - 1);
+    free_stack(stack_a);
     return (0);
 }
