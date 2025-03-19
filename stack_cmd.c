@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:00:39 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/18 16:05:18 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/19 14:59:14 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ void swap(t_stack *stack)
         return ;
     first = stack->top;
     second = stack->top->next;
+    if(stack->size ==2)
+    {
+        stack->top = second;
+        stack->bottom = first;
+        return ;
+    }
     stack->bottom->next = second;
     second->prev = stack->bottom;
     first->next = second->next;
@@ -64,8 +70,31 @@ void push(t_stack *stack_a,t_stack *stack_b)
         stack_a->bottom->next = stack_a->top;
         stack_a->top->prev = stack_a->bottom;
     }
-    push_back(stack_b,tmp->data);
+    push_front(stack_b,tmp->data);
     free(tmp);
     stack_a->size--;
-    reverse_rotate(stack_b);
+}
+
+void push_front(t_stack *stack,int data)
+{
+    t_node *new_node;
+
+    new_node = (t_node *)malloc(sizeof(t_node));
+    new_node->data = data;
+    if(stack->size == 0)
+    {
+        stack->top = new_node;
+        stack->bottom = new_node;
+        new_node->next = new_node;
+        new_node->prev = new_node;
+    }
+    else
+    {
+        new_node->next = stack->top;
+        new_node->prev = stack->bottom;
+        stack->top->prev = new_node;
+        stack->bottom->next = new_node;
+        stack->top = new_node;
+    }
+    stack->size++;
 }

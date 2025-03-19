@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:42:28 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/19 13:21:30 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/19 13:56:35 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void push_swap(t_stack *stack_a,int size);
 void sort_three(t_stack *stack_a);
 void small_sort(t_stack *stack_a);
 void store_cmd(char *cmd);
+void push_front(t_stack *stack,int data);
 
 #endif
