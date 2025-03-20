@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 20:45:12 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/21 01:42:06 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ void	push_swap(t_stack *stack_a, int size)
 	t_stack	*stack_b;
 	int		chunk;
 
-	chunk = size / 5;
+    if(size >= 300)
+        chunk = size / 10;
+	else
+        chunk = size / 5;
 	if (chunk == 0)
 		chunk = 2;
 	stack_b = init_stack();

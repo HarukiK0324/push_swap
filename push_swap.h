@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:42:28 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 19:37:29 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/20 23:47:13 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ void				small_sort(t_stack *stack_a);
 void				store_cmd(char *cmd);
 void				push_front(t_stack *stack, int data);
 void				*init_string(char *str, char *prev_cmd);
+int					min(int a, int b);
+int					max(int a, int b);
 
 #endif
