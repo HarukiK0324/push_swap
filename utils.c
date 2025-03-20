@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:44:34 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 18:26:11 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/20 19:56:05 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ char	*ft_strdup(const char *s)
 
 void error()
 {
-    write(1,"Error\n",6);
-    exit(1);
+    write(2,"Error\n",6);
+    exit(EXIT_FAILURE);
 }

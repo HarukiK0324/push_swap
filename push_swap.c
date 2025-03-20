@@ -6,115 +6,117 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 19:38:28 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/20 20:45:12 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void insertion_sort(t_stack *stack_a,t_stack *stack_b)
+void	insertion_sort(t_stack *stack_a, t_stack *stack_b)
 {
-    while(stack_b->size > 0)
-    {
-        if(find_num(stack_b,stack_b->size) == 1)
-            rotate_find(stack_a,stack_b,stack_b->size,&rotate);
-        else
-            rotate_find(stack_a,stack_b,stack_b->size,&reverse_rotate);
-    }
+	while (stack_b->size > 0)
+	{
+		if (find_num(stack_b, stack_b->size) == 1)
+			rotate_find(stack_a, stack_b, stack_b->size, &rotate);
+		else
+			rotate_find(stack_a, stack_b, stack_b->size, &reverse_rotate);
+	}
 }
 
-void push_to_b(t_stack *stack_a,t_stack *stack_b,int chunk)
+void	push_to_b(t_stack *stack_a, t_stack *stack_b, int chunk)
 {
-    int itr;
+	int	itr;
 
-    itr = 1;
-    while(stack_a->size > 0)
-    {
-        while(stack_b->size < chunk * itr && stack_a->size > 0)
-        {
-            if(stack_a->top->data <= chunk * itr)
-            {
-                push(stack_a,stack_b,'b');  
-                if(stack_b->top->data <= chunk * itr - chunk/2)
-                    rotate(stack_b,'b');
-            }
-            else
-                rotate(stack_a,'a');
-        }
-        itr++;
-    }
+	itr = 1;
+	while (stack_a->size > 0)
+	{
+		while (stack_b->size < chunk * itr && stack_a->size > 0)
+		{
+			if (stack_a->top->data <= chunk * itr)
+			{
+				push(stack_a, stack_b, 'b');
+				if (stack_b->top->data <= chunk * itr - chunk / 2)
+					rotate(stack_b, 'b');
+			}
+			else
+				rotate(stack_a, 'a');
+		}
+		itr++;
+	}
 }
 
-void push_swap(t_stack *stack_a,int size)
+void	push_swap(t_stack *stack_a, int size)
 {
-    t_stack *stack_b;
-    int chunk;
+	t_stack	*stack_b;
+	int		chunk;
 
-    chunk = size / 8;
-    if(chunk == 0)
-        chunk = 2;
-    stack_b = init_stack();
-    push_to_b(stack_a,stack_b,chunk);
-    insertion_sort(stack_a,stack_b);
+	chunk = size / 5;
+	if (chunk == 0)
+		chunk = 2;
+	stack_b = init_stack();
+	push_to_b(stack_a, stack_b, chunk);
+	insertion_sort(stack_a, stack_b);
 }
 
-void sort_three(t_stack *stack_a)
+void	sort_three(t_stack *stack_a)
 {
-    if(stack_a->top->data > stack_a->top->next->data && stack_a->top->data > stack_a->bottom->data)
-            rotate(stack_a,'a');
-    else if(stack_a->top->next->data > stack_a->top->data && stack_a->top->next->data > stack_a->bottom->data)
-        reverse_rotate(stack_a,'a');
-    if(stack_a->top->data > stack_a->top->next->data)
-        swap(stack_a,'a');
+	if (stack_a->top->data > stack_a->top->next->data
+		&& stack_a->top->data > stack_a->bottom->data)
+		rotate(stack_a, 'a');
+	else if (stack_a->top->next->data > stack_a->top->data
+		&& stack_a->top->next->data > stack_a->bottom->data)
+		reverse_rotate(stack_a, 'a');
+	if (stack_a->top->data > stack_a->top->next->data)
+		swap(stack_a, 'a');
 }
 
-void small_sort(t_stack *stack_a)
+void	small_sort(t_stack *stack_a)
 {
-    t_stack *stack_b;
+	t_stack	*stack_b;
 
-    if(stack_a->size == 2 && stack_a->top->data == 2)
-        swap(stack_a,'a');
-    else if(stack_a->size == 3)
-        sort_three(stack_a);
-    else
-    {
-        stack_b = init_stack();
-        while(stack_a->size > 3)
-        {
-            if(stack_a->top->data <= 2)
-                push(stack_a,stack_b,'b');
-            else
-                rotate(stack_a,'a');
-        }
-        sort_three(stack_a);
-        while(stack_b->size > 0)
-            push(stack_b,stack_a,'a');
-        if(stack_a->top->data > stack_a->top->next->data)
-            swap(stack_a,'a');
-        free_stack(stack_b);
-    }
+	if (stack_a->size == 2 && stack_a->top->data == 2)
+		swap(stack_a, 'a');
+	else if (stack_a->size == 3)
+		sort_three(stack_a);
+	else
+	{
+		stack_b = init_stack();
+		while (stack_a->size > 3)
+		{
+			if (stack_a->top->data <= 2)
+				push(stack_a, stack_b, 'b');
+			else
+				rotate(stack_a, 'a');
+		}
+		sort_three(stack_a);
+		while (stack_b->size > 0)
+			push(stack_b, stack_a, 'a');
+		if (stack_a->top->data > stack_a->top->next->data)
+			swap(stack_a, 'a');
+		free_stack(stack_b);
+	}
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-    t_stack *stack_a;
-    int i;
+	t_stack	*stack_a;
+	int		i;
 
-    if(argc == 1 || check_dup(argc - 1,argv + 1) == -1)
-        error();
-    stack_a = init_stack();
-    i = 0;
-    while(i < argc - 1)
-    {
-        push_back(stack_a,to_int(argv[i+1]));
-        i++;
-    }
-    stack_a = indexing(stack_a,argc - 1);
-    if(stack_a->size < 6)
-        small_sort(stack_a);
-    else
-        push_swap(stack_a,argc - 1);
-    store_cmd(NULL);
-    free_stack(stack_a);
-    return (0);
+	if (argc == 1 || check_dup(argc - 1, argv + 1) == -1)
+		error();
+	stack_a = init_stack();
+	i = 0;
+	while (i < argc - 1)
+	{
+		push_back(stack_a, to_int(argv[i + 1]));
+		i++;
+	}
+	stack_a = indexing(stack_a, argc - 1);
+	if (stack_a->size < 6)
+		small_sort(stack_a);
+	else
+		push_swap(stack_a, argc - 1);
+	store_cmd(NULL);
+	free_stack(stack_a);
+	return (0);
 }

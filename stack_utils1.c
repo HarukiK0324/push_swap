@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:07:08 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 19:34:15 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/20 20:08:18 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int check_error(char *num)
         return (-1);
     if(num[0] == '-')
     {
-        if(ft_strlen(num) == 11 && ft_strcmp(num,"-2147483648") > 0)
+        if((ft_strlen(num) == 11 && ft_strcmp(num,"-2147483648") > 0) || ft_strcmp(num,"-") == 0)
             return (-1);
     }
     else
@@ -79,7 +79,7 @@ int check_dup(int size,char **arr)
         j = i + 1;
         while(j < size)
         {
-            if(ft_strcmp(arr[i],arr[j]) == 0)
+            if(to_int(arr[i]) == to_int(arr[j]))
                 return (-1);
             j++;
         }
