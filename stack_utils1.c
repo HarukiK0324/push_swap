@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:07:08 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 18:14:37 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/20 19:34:15 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,22 +92,27 @@ void store_cmd(char *cmd)
 {
     static char *prev_cmd;
 
-    if(prev_cmd == NULL)
-    {
-        if(cmd != NULL)
-            prev_cmd = ft_strdup(cmd);
-    }
+    if(prev_cmd == NULL && cmd != NULL)
+        prev_cmd = ft_strdup(cmd);
     else
     {
         if((ft_strcmp(prev_cmd,"ra") == 0 && ft_strcmp(cmd,"rb") == 0)||(ft_strcmp(prev_cmd,"rb") == 0 && ft_strcmp(cmd,"ra") == 0))
-            write(1,"rr\n",3);
+            prev_cmd = init_string("rr\n",prev_cmd);
         else if((ft_strcmp(prev_cmd,"rra") == 0 && ft_strcmp(cmd,"rrb") == 0)||(ft_strcmp(prev_cmd,"rrb") == 0 && ft_strcmp(cmd,"rra") == 0))
-            write(1,"rrr\n",4);
+            prev_cmd = init_string("rrr\n",prev_cmd);
         else
         {
             ft_printf("%s\n",prev_cmd);
             free(prev_cmd);
-            prev_cmd = ft_strdup(cmd);
+            if(cmd != NULL)
+                prev_cmd = ft_strdup(cmd);
         }
     }
+}
+
+void *init_string(char *str,char *prev_cmd)
+{
+    write(1,str,ft_strlen(str));
+    free(prev_cmd);
+    return NULL;
 }

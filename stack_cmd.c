@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:00:39 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 18:10:45 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/20 19:34:53 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void swap(t_stack *stack, char c)
     first->prev = second;
     stack->top = second;
     if(c == 'a')
-        store_cmd("sa\n");
+        store_cmd("sa");
     else if(c == 'b')
-        store_cmd("sb\n");
+        store_cmd("sb");
 }
 
 void rotate(t_stack *stack,char c)
@@ -47,9 +47,9 @@ void rotate(t_stack *stack,char c)
     stack->bottom = stack->top;
     stack->top = stack->top->next;
     if(c == 'a')
-        store_cmd("ra\n");
+        store_cmd("ra");
     else if(c == 'b')
-        store_cmd("rb\n");
+        store_cmd("rb");
 }
 
 void reverse_rotate(t_stack *stack,char c)
@@ -59,9 +59,9 @@ void reverse_rotate(t_stack *stack,char c)
     stack->top = stack->bottom;
     stack->bottom = stack->bottom->prev;
     if(c == 'a')
-        store_cmd("rra\n");
+        store_cmd("rra");
     else if(c == 'b')
-        store_cmd("rrb\n");
+        store_cmd("rrb");
 }
 
 void push(t_stack *stack_a,t_stack *stack_b,char c)
@@ -86,9 +86,9 @@ void push(t_stack *stack_a,t_stack *stack_b,char c)
     free(tmp);
     stack_a->size--;
     if(c == 'a')
-        store_cmd("pa\n");
+        store_cmd("pa");
     else if(c == 'b')
-        store_cmd("pb\n");
+        store_cmd("pb");
 }
 
 void push_front(t_stack *stack,int data)
