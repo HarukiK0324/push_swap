@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/19 15:26:31 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/20 18:07:07 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void push_to_b(t_stack *stack_a,t_stack *stack_b,int chunk)
         {
             if(stack_a->top->data <= chunk * itr)
             {
-                push(stack_a,stack_b);  
+                push(stack_a,stack_b,'b');  
                 if(stack_b->top->data <= chunk * itr - chunk/2)
-                    rotate(stack_b);
+                    rotate(stack_b,'b');
             }
             else
-                rotate(stack_a);
+                rotate(stack_a,'a');
         }
         itr++;
     }
@@ -61,11 +61,11 @@ void push_swap(t_stack *stack_a,int size)
 void sort_three(t_stack *stack_a)
 {
     if(stack_a->top->data > stack_a->top->next->data && stack_a->top->data > stack_a->bottom->data)
-            rotate(stack_a);
+            rotate(stack_a,'a');
     else if(stack_a->top->next->data > stack_a->top->data && stack_a->top->next->data > stack_a->bottom->data)
-        reverse_rotate(stack_a);
+        reverse_rotate(stack_a,'a');
     if(stack_a->top->data > stack_a->top->next->data)
-        swap(stack_a);
+        swap(stack_a,'a');
 }
 
 void small_sort(t_stack *stack_a)
@@ -73,26 +73,24 @@ void small_sort(t_stack *stack_a)
     t_stack *stack_b;
 
     if(stack_a->size == 2 && stack_a->top->data == 2)
-        swap(stack_a);
+        swap(stack_a,'a');
     else if(stack_a->size == 3)
-    {
         sort_three(stack_a);
-    }
     else
     {
         stack_b = init_stack();
         while(stack_a->size > 3)
         {
             if(stack_a->top->data <= 2)
-                push(stack_a,stack_b);
+                push(stack_a,stack_b,'b');
             else
-                rotate(stack_a);
+                rotate(stack_a,'a');
         }
         sort_three(stack_a);
         while(stack_b->size > 0)
-            push(stack_b,stack_a);
+            push(stack_b,stack_a,'a');
         if(stack_a->top->data > stack_a->top->next->data)
-            swap(stack_a);
+            swap(stack_a,'a');
         free_stack(stack_b);
     }
 }

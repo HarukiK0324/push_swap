@@ -6,13 +6,13 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:00:39 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/19 15:25:55 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/20 18:10:45 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void swap(t_stack *stack)
+void swap(t_stack *stack, char c)
 {
     t_node *first;
     t_node *second;
@@ -34,25 +34,37 @@ void swap(t_stack *stack)
     second->next = first;
     first->prev = second;
     stack->top = second;
+    if(c == 'a')
+        store_cmd("sa\n");
+    else if(c == 'b')
+        store_cmd("sb\n");
 }
 
-void rotate(t_stack *stack)
+void rotate(t_stack *stack,char c)
 {
     if(stack->size <= 1)
         return ;
     stack->bottom = stack->top;
     stack->top = stack->top->next;
+    if(c == 'a')
+        store_cmd("ra\n");
+    else if(c == 'b')
+        store_cmd("rb\n");
 }
 
-void reverse_rotate(t_stack *stack)
+void reverse_rotate(t_stack *stack,char c)
 {
     if(stack->size <= 1)
         return ;
     stack->top = stack->bottom;
     stack->bottom = stack->bottom->prev;
+    if(c == 'a')
+        store_cmd("rra\n");
+    else if(c == 'b')
+        store_cmd("rrb\n");
 }
 
-void push(t_stack *stack_a,t_stack *stack_b)
+void push(t_stack *stack_a,t_stack *stack_b,char c)
 {
     t_node *tmp;
 
@@ -73,6 +85,10 @@ void push(t_stack *stack_a,t_stack *stack_b)
     push_front(stack_b,tmp->data);
     free(tmp);
     stack_a->size--;
+    if(c == 'a')
+        store_cmd("pa\n");
+    else if(c == 'b')
+        store_cmd("pb\n");
 }
 
 void push_front(t_stack *stack,int data)
