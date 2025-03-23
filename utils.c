@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:44:34 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 22:46:26 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/23 12:50:20 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
+	if(s1 == NULL || s2 == NULL)
+		return (-1);
 	while (*s1 != '\0' && (*s1 == *s2))
 	{
 		s1++;
