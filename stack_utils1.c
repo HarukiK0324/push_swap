@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:07:08 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/21 00:18:18 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/23 13:02:36 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	find_num(t_stack *stack_b, int num)
 		tmp = tmp->next;
 		j++;
 	}
-	if (i < stack_b->size - i || j < stack_b->size - j)
+	if (i < stack_b->size - i)
 		return (1);
 	return (0);
 }
