@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:42:28 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 23:47:13 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/23 12:56:40 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void				push_front(t_stack *stack, int data);
 void				*init_string(char *str, char *prev_cmd);
 int					min(int a, int b);
 int					max(int a, int b);
+int is_sorted(t_stack *stack);
 
 #endif

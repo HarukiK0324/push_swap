@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 23:46:46 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/20 23:50:46 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/23 12:56:32 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,21 @@ int	max(int a, int b)
 	if (a > b)
 		return (a);
 	return (b);
+}
+
+int is_sorted(t_stack *stack)
+{
+	t_node	*tmp;
+	int i;
+
+	i = 0;
+	tmp = stack->top;
+	while (i < stack->size)
+	{
+		if (tmp->data != i + 1)
+			return (0);
+		tmp = tmp->next;
+		i++;
+	}
+	return (1);
 }
