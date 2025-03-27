@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:07:08 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/23 13:02:36 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/27 17:54:55 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	check_error(char *num)
 		if ((ft_strlen(num) == 11 && ft_strcmp(num, "-2147483648") > 0)
 			|| ft_strcmp(num, "-") == 0)
 			return (-1);
-        i++;
+		i++;
 	}
 	else
 	{
@@ -107,6 +107,8 @@ void	store_cmd(char *cmd)
 			free(prev_cmd);
 			if (cmd != NULL)
 				prev_cmd = ft_strdup(cmd);
+			else
+				prev_cmd = cmd;
 		}
 	}
 }
