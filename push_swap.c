@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 10:26:16 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/23 12:55:04 by haruki           ###   ########.fr       */
+/*   Created: 2024/12/20 10:26:16 by hkasamat          #+#    #+#             */
+/*   Updated: 2025/03/27 18:06:23 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	insertion_sort(t_stack *stack_a, t_stack *stack_b)
-{
-	while (stack_b->size > 0)
-	{
-		if (find_num(stack_b, stack_b->size) == 1)
-			rotate_find(stack_a, stack_b, stack_b->size, &rotate);
-		else
-			rotate_find(stack_a, stack_b, stack_b->size, &reverse_rotate);
-	}
-}
 
 void	push_to_b(t_stack *stack_a, t_stack *stack_b, int chunk)
 {
@@ -50,10 +39,10 @@ void	push_swap(t_stack *stack_a, int size)
 	t_stack	*stack_b;
 	int		chunk;
 
-    if(size >= 300)
-        chunk = size / 10;
+	if (size >= 300)
+		chunk = size / 10;
 	else
-        chunk = size / 5;
+		chunk = size / 5;
 	if (chunk == 0)
 		chunk = 2;
 	stack_b = init_stack();
@@ -115,8 +104,8 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	stack_a = indexing(stack_a, argc - 1);
-	if(is_sorted(stack_a) == 1)
-		return(free_stack(stack_a),0);
+	if (is_sorted(stack_a) == 1)
+		return (free_stack(stack_a), 0);
 	if (stack_a->size < 6)
 		small_sort(stack_a);
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/09 21:44:34 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/23 12:50:20 by haruki           ###   ########.fr       */
+/*   Created: 2025/03/09 21:44:34 by hkasamat          #+#    #+#             */
+/*   Updated: 2025/03/27 18:03:51 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	if(s1 == NULL || s2 == NULL)
+	if (s1 == NULL || s2 == NULL)
 		return (-1);
 	while (*s1 != '\0' && (*s1 == *s2))
 	{
@@ -24,26 +24,26 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
 
-int to_int(char *str)
+int	to_int(char *str)
 {
-    int i;
-    int itr;
-    int num;
+	int	i;
+	int	itr;
+	int	num;
 
-    num = 0;
-    i = 0;
-    itr = 1;
-    if(str[0] == '-')
-    {
-        itr = -1;
-        i++;
-    }
-    while(str[i] != '\0')
-    {
-        num = num * 10 + itr * (str[i] - '0');
-        i++;
-    }
-    return (num);
+	num = 0;
+	i = 0;
+	itr = 1;
+	if (str[0] == '-')
+	{
+		itr = -1;
+		i++;
+	}
+	while (str[i] != '\0')
+	{
+		num = num * 10 + itr * (str[i] - '0');
+		i++;
+	}
+	return (num);
 }
 
 unsigned int	size_of(char const *s)
@@ -76,8 +76,8 @@ char	*ft_strdup(const char *s)
 	return (ptr);
 }
 
-void error()
+void	error(void)
 {
-    write(2,"Error\n",6);
-    exit(EXIT_FAILURE);
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }

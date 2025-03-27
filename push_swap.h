@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 21:42:28 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/23 12:56:40 by haruki           ###   ########.fr       */
+/*   Created: 2024/12/21 21:42:28 by hkasamat          #+#    #+#             */
+/*   Updated: 2025/03/27 18:04:39 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# include "../libftprintf/ft_printf.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_node
 {
@@ -26,11 +31,6 @@ typedef struct s_stack
 	t_node			*top;
 	t_node			*bottom;
 }					t_stack;
-
-# include "../libftprintf/ft_printf.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 
 int					ft_strcmp(const char *s1, const char *s2);
 int					to_int(char *str);
@@ -60,6 +60,6 @@ void				push_front(t_stack *stack, int data);
 void				*init_string(char *str, char *prev_cmd);
 int					min(int a, int b);
 int					max(int a, int b);
-int is_sorted(t_stack *stack);
+int					is_sorted(t_stack *stack);
 
 #endif

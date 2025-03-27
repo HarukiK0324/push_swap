@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/18 16:07:08 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/27 17:54:55 by hkasamat         ###   ########.fr       */
+/*   Created: 2025/03/18 16:07:08 by hkasamat          #+#    #+#             */
+/*   Updated: 2025/03/27 18:04:26 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	find_num(t_stack *stack_b, int num)
 		return (1);
 	return (0);
 }
+
 int	check_error(char *num)
 {
 	int	i;
