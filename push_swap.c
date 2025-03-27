@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:26:16 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/27 18:06:23 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/03/27 18:40:16 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,9 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_a;
 	int		i;
 
-	if (argc == 1 || check_dup(argc - 1, argv + 1) == -1)
+	if (argc == 1)
+		return (0);
+	else if (check_dup(argc - 1, argv + 1) == -1)
 		error();
 	stack_a = init_stack();
 	i = 0;
