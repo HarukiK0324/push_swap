@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 15:41:28 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/31 16:21:46 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/31 20:04:07 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	exec_cmd(char **cmd, int i, t_stack *stack_a, t_stack *stack_b)
 			push(stack_b, stack_a);
 		if (!ft_strncmp(cmd[j], "pb\n", 3))
 			push(stack_a, stack_b);
-		if (!ft_strncmp(cmd[j], "ra\n", 3) || !ft_strncmp(cmd[j], "rr", 3))
+		if (!ft_strncmp(cmd[j], "ra\n", 3) || !ft_strncmp(cmd[j], "rr\n", 3))
 			rotate(stack_a);
 		if (!ft_strncmp(cmd[j], "rb\n", 3) || !ft_strncmp(cmd[j], "rr\n", 3))
 			rotate(stack_b);
