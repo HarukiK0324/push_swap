@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 15:41:28 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/31 16:17:30 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:20:22 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	exec_cmd(char **cmd, int i, t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void	check_sorted(t_stack *stack_a, t_stack *stack_b)
+int	check_sorted(t_stack *stack_a, t_stack *stack_b)
 {
 	char	**cmd;
 	char	*str;
@@ -82,15 +82,15 @@ void	check_sorted(t_stack *stack_a, t_stack *stack_b)
 		}
 		if (check_cmd(str) == 0)
 			return (free(str), free_cmd(cmd, i), free_stack(stack_a),
-				free_stack(stack_b), error());
+				free_stack(stack_b), 1);
 		cmd[i++] = str;
 		str = get_next_line(0);
 	}
 	exec_cmd(cmd, i, stack_a, stack_b);
 	free_cmd(cmd, i);
 	if (is_sorted(stack_a) == 1 && stack_b->size == 0)
-		return (write(2, "OK\n", 3));
-	write(2, "KO\n", 3);
+		return (write(2, "OK\n", 3), 0);
+	return (write(2, "KO\n", 3), 0);
 }
 
 int	main(int argc, char *argv[])
@@ -112,7 +112,8 @@ int	main(int argc, char *argv[])
 	}
 	stack_a = indexing(stack_a, argc - 1);
 	stack_b = init_stack();
-	check_sorted(stack_a, stack_b);
+	if (check_sorted(stack_a, stack_b) == 1)
+		error();
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
