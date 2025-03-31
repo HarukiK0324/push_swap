@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:14:07 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/29 21:35:48 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:33:50 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-int		ft_strlen(char *s);
+int		ft_strlen(const char *s);
 char	*ft_strjoin(char *line, char *buffer);
 char	*get_line_from_buffer(char *line, int *fd);
 int		find_newline(char *line);

@@ -60,9 +60,9 @@ void	check_sorted(t_stack *stack_a, t_stack *stack_b)
 
 	i = 0;
 	cmd = (char **)malloc(sizeof(char *) * 10000);
+    str = get_next_line(0);
 	while (str)
 	{
-		str = get_next_line(0);
 		if (ft_strncmp(str, "EOF\n", 4) == 0 || check_cmd(str) == 0)
 		{
 			free(str);
@@ -71,6 +71,7 @@ void	check_sorted(t_stack *stack_a, t_stack *stack_b)
 		}
 		cmd[i] = str;
 		i++;
+        str = get_next_line(0);
 	}
 	exec_cmd(cmd, i, stack_a, stack_b);
 	if (is_sorted(stack_a) == 1 && stack_b->size == 0)

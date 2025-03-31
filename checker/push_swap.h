@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 21:42:28 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/31 15:32:36 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/31 15:35:29 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void				push(t_stack *stack_a, t_stack *stack_b);
 char				*ft_strdup(const char *s);
 int					find_num(t_stack *stack_b, int num);
 void				rotate_find(t_stack *stack_a, t_stack *stack_b, int num,
-						void (*f)(t_stack *, char));
+						void (*f)(t_stack *));
 void				insertion_sort(t_stack *stack_a, t_stack *stack_b);
 void				push_to_b(t_stack *stack_a, t_stack *stack_b, int chunk);
 void				push_swap(t_stack *stack_a, int size);

@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:45:32 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/31 15:09:18 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/31 15:36:27 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,15 +92,11 @@ t_stack	*indexing(t_stack *stack, int size)
 void	rotate_find(t_stack *stack_a, t_stack *stack_b, int num,
 		void (*f)(t_stack *))
 {
-	int	found;
-
-	found = 0;
 	while (stack_b->top->data != num)
 	{
 		if (stack_b->top->data == num - 1)
 		{
 			push(stack_b, stack_a);
-			found = 1;
 			if (find_num(stack_b, num) == 1)
 				f = &rotate;
 			else
