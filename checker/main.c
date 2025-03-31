@@ -6,7 +6,7 @@
 /*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 15:41:28 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/31 16:11:04 by hkasamat         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:17:30 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,16 @@ void	check_sorted(t_stack *stack_a, t_stack *stack_b)
 			break ;
 		}
 		if (check_cmd(str) == 0)
-			return (free(str), free_cmd(cmd, i), error());
+			return (free(str), free_cmd(cmd, i), free_stack(stack_a),
+				free_stack(stack_b), error());
 		cmd[i++] = str;
 		str = get_next_line(0);
 	}
 	exec_cmd(cmd, i, stack_a, stack_b);
-	if (is_sorted(stack_a) == 1 && stack_b->size == 0)
-		write(2, "OK\n", 3);
-	else
-		write(2, "KO\n", 3);
 	free_cmd(cmd, i);
+	if (is_sorted(stack_a) == 1 && stack_b->size == 0)
+		return (write(2, "OK\n", 3));
+	write(2, "KO\n", 3);
 }
 
 int	main(int argc, char *argv[])
