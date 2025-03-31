@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:00:39 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/31 17:41:58 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/31 17:43:47 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap(t_stack *stack)
 
 	first = stack->top;
 	second = stack->top->next;
-	if(stack->size <= 1)
+	if (stack->size <= 1)
 		return ;
 	if (stack->size == 2)
 	{
