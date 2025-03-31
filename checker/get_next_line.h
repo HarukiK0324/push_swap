@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:14:07 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/31 15:33:50 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/31 15:56:43 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*get_first_line(char *line);
 char	*update_line(char *line, char **first_line);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000
+#  define BUFFER_SIZE 1
 # endif
 
 #endif

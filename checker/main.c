@@ -1,4 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/31 15:41:28 by hkasamat          #+#    #+#             */
+/*   Updated: 2025/03/31 16:07:17 by haruki           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+
+void print_stack(t_stack *stack)
+{
+	t_node *current;
+	current = stack->top;
+	int i;
+	i = 0;
+	while(i < stack->size)
+	{
+		printf("%d ", current->data);
+		current = current->next;
+		i++;
+	}
+}
 
 int	check_cmd(char *str)
 {
@@ -63,14 +90,14 @@ void	check_sorted(t_stack *stack_a, t_stack *stack_b)
     str = get_next_line(0);
 	while (str)
 	{
-		if (ft_strncmp(str, "EOF\n", 4) == 0 || check_cmd(str) == 0)
+		if(ft_strncmp(str, "EOF\n", 4) == 0)
 		{
 			free(str);
-            free_cmd(cmd, i);
-			return ;
+			break ;
 		}
-		cmd[i] = str;
-		i++;
+		if(check_cmd(str) == 0)
+			return (free(str),free_cmd(cmd, i), error());
+		cmd[i++] = str;
         str = get_next_line(0);
 	}
 	exec_cmd(cmd, i, stack_a, stack_b);
